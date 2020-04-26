@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.10)
+cmake_minimum_required(VERSION 3.17)
 
 function(add_binary_bundle BUNDLE_NAME)
     cmake_parse_arguments(PARSE_ARGV 1 ARG "" "" "NAME;PATH")
