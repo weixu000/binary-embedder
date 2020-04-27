@@ -11,11 +11,11 @@ function(add_binary_bundle BUNDLE_NAME)
     set(BUNDLE_HEADER ${BUNDLE_INCLUDE_DIR}/${BUNDLE_NAME}.hpp)
     set(BUNDLE_SOURCE ${CMAKE_CURRENT_BINARY_DIR}/${BUNDLE_NAME}.cpp)
 
-    find_package(Python REQUIRED)
+    find_package(Python3 REQUIRED)
     set(EMBEDDER_SCRIPT "${CMAKE_CURRENT_FUNCTION_LIST_DIR}/binary-embedder.py")
     file(MAKE_DIRECTORY ${BUNDLE_INCLUDE_DIR})
     add_custom_command(OUTPUT ${BUNDLE_SOURCE} ${BUNDLE_HEADER}
-            COMMAND "${Python_EXECUTABLE}" "${EMBEDDER_SCRIPT}" "${BUNDLE_HEADER}" "${BUNDLE_SOURCE}" ${BUNDLE_FILES}
+            COMMAND "${Python3_EXECUTABLE}" "${EMBEDDER_SCRIPT}" "${BUNDLE_HEADER}" "${BUNDLE_SOURCE}" ${BUNDLE_FILES}
             DEPENDS ${ARG_PATH})
     add_library(${BUNDLE_NAME} ${BUNDLE_SOURCE} ${BUNDLE_HEADER})
     target_include_directories(${BUNDLE_NAME} PUBLIC ${BUNDLE_INCLUDE_DIR})
